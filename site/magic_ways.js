@@ -13,8 +13,10 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   fft = new p5.FFT(0.2, 512);
+  if (touchStarted) {
   music.loop();
   music.setVolume(0.5);
+  }
 }
 
 function draw() {
