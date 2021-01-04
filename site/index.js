@@ -11,8 +11,8 @@ let instruction = ['C', 'Cl', 'Cli', 'Clic', 'Click', 'Click ', 'Click L',
 let instructionPos = 0;
 
 function preload() {
-  font = loadFont('../assets/IMFellEnglish-Regular.ttf');
-  type = loadSound('../assets/typewriter-key-1.mp3');
+  font = loadFont('assets/IMFellEnglish-Regular.ttf');
+  type = loadSound('assets/typewriter-key-1.mp3');
 }
 
 function setup() {
