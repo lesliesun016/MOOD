@@ -29,7 +29,9 @@ function draw() {
 
   if (titlePos < title.length) {
     text(title[titlePos], 0, height / 2 - 250, width);
-    type.play();
+    if (touchStarted) {
+      type.play();
+    }
     titlePos++;
   } else {
     text('M O O D', 0, height / 2 - 250, width);
@@ -37,7 +39,9 @@ function draw() {
     if (instructionPos < instruction.length) {
       textSize(30);
       text(instruction[instructionPos], 0, height / 2, width);
-      type.play();
+      if (touchStarted) {
+        type.play();
+      }
       instructionPos++;
     } else {
       text('Click Left or Right', 0, height / 2, width);
