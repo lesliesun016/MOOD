@@ -3,12 +3,12 @@ let title = ['M', 'M O', 'M O O', 'M O O D'];
 let titlePos = 0;
 
 
-let instruction = ['C', 'Cl', 'Cli', 'Clic', 'Click', 'Click ', 'Click L',
-  'Click Le', 'Click Lef', 'Click Left', 'Click Left ', 'Click Left o',
-  'Click Left or', 'Click Left or ', 'Click Left or R', 'Click Left or Ri',
-  'Click Left or Rig', 'Click Left or Righ', 'Click Left or Right',
-];
-let instructionPos = 0;
+// let instruction = ['C', 'Cl', 'Cli', 'Clic', 'Click', 'Click ', 'Click L',
+//   'Click Le', 'Click Lef', 'Click Left', 'Click Left ', 'Click Left o',
+//   'Click Left or', 'Click Left or ', 'Click Left or R', 'Click Left or Ri',
+//   'Click Left or Rig', 'Click Left or Righ', 'Click Left or Right',
+// ];
+// let instructionPos = 0;
 
 function preload() {
   font = loadFont('assets/IMFellEnglish-Regular.ttf');
@@ -29,23 +29,21 @@ function draw() {
 
   if (titlePos < title.length) {
     text(title[titlePos], 0, height / 2 - 250, width);
-    if (touchStarted) {
-      type.play();
-    }
+    type.play();
     titlePos++;
   } else {
     text('M O O D', 0, height / 2 - 250, width);
     textSize(30);
-    if (instructionPos < instruction.length) {
-      textSize(30);
-      text(instruction[instructionPos], 0, height / 2, width);
-      if (touchStarted) {
-        type.play();
-      }
-      instructionPos++;
-    } else {
-      text('Click Left or Right', 0, height / 2, width);
-    }
+    text('Click Left or Right', 0, height / 2, width);
+    // textSize(30);
+    // if (instructionPos < instruction.length) {
+    //   textSize(30);
+    //   text(instruction[instructionPos], 0, height / 2, width);
+    //   type.play();
+    //   instructionPos++;
+    // } else {
+    //   text('Click Left or Right', 0, height / 2, width);
+    // }
   }
 
 
