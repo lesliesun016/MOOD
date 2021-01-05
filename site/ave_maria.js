@@ -12,10 +12,8 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   fft = new p5.FFT(0.1, 512);
-  if (touchStarted) {
-    music.loop();
-    music.setVolume(0.5);
-  }
+  music.loop();
+  music.setVolume(0.5);
 }
 
 function draw() {
@@ -37,8 +35,8 @@ function draw() {
   let r = 0;
   let t = 0;
   for (let pos = 0; pos < spectrum.length; pos++) {
-    r = map(spectrum[i], 0, 255, 3, 7);
-    t = map(spectrum[i], 0, 255, 150, 300);
+    r = map(spectrum[pos], 0, 255, 3, 7);
+    t = map(spectrum[pos], 0, 255, 150, 300);
     while (i < width) {
       let j = 0;
       while (j < height) {
