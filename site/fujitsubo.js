@@ -2,6 +2,7 @@ let img;
 let font;
 let music;
 let fft;
+let time;
 
 function preload() {
   img = loadImage('../assets/pascal.png');
@@ -12,28 +13,43 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   fft = new p5.FFT(0.8, 256);
-  if (touchStarted) {
   music.loop();
-  music.setVolume(0.5);
-  }
+  //music.setVolume(0.5);
 }
 
 function draw() {
-  frameRate(15);
   background(0);
 
+  frameRate(5);
+  fill(180, 0, 0);
+  noStroke();
+  let h = map(time, 0, music.duration() * 5, 0, height);
+  if (time <= music.duration() * 5) {
+    rect(0, height, width, -h);
+    time++;
+  } else {
+    time = 0;
+  }
+
   let spectrum = fft.analyze();
+  let x = 0;
   for (let i = 0; i < spectrum.length; i++) {
-    let x = map(spectrum[i], 0, 255, 0, width);
-    let y = map(spectrum[i], 0, 255, 0, height);
+    //let x = map(i, 0, spectrum.length, 0, width);
+    let y = map(spectrum[i], 0, 255, 0, 2 * (height - h));
     let r = map(spectrum[i], 0, 255, 255, 180);
 
+    stroke(180, 0, 0);
+    strokeWeight(1);
+    line(x, 0, x, height);
+
+    fill(180, 0, 0);
     noStroke();
-    fill(r, 0, 0);
-    // rect((width - x) / 2, height - 3 * y / 2, x, y);
-    ellipse(width / 2, height - 3 * y / 2, x * 1.5, y);
-    // fill(255,255,255, 100);
-    // ellipse(width / 2, height - 3 * y / 2, x, y);
+    ellipse(width / 2 - x, 0, width / 128, y);
+    ellipse(width / 2 + x, 0, width / 128, y);
+    x += width / 32;
+    // noStroke();
+    // fill(r, 0, 0);
+    // ellipse(width / 2, height - 3 * y / 2, x * 1.5, y);
   }
 
   noStroke();
