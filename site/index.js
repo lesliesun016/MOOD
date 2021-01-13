@@ -16,7 +16,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  cnv = createCanvas(windowWidth, windowHeight); 
+  cnv.position(0, 0);
+  cnv.touchStarted(userStartAudio);
 }
 
 function draw() {
