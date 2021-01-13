@@ -10,12 +10,13 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  cnv = createCanvas(windowWidth, windowHeight); 
+  cnv.position(0, 0);
+  cnv.touchStarted(userStartAudio);
+  
   fft = new p5.FFT(0.2, 512);
-  if (touchStarted) {
   music.loop();
   music.setVolume(0.5);
-  }
 }
 
 function draw() {
